@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Blackbird Studios</title>
         <meta name="description" content="At Blackbird, we combine our unique insights of the university market with a world-class product team. We're building thoughtful products for the next generation.">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,600,400italic' rel='stylesheet' type='text/css'>
@@ -75,7 +76,14 @@
         var logo      = document.getElementById('logo');
 
         var ctx       = canvas.getContext('2d');
-        // var dimension =
+
+        var shapes = [];
+        function Shape() {
+        }
+
+        function init() {
+
+        }
 
         function loop() {
             canvas.width   = window.innerWidth;
@@ -84,8 +92,9 @@
             if(logo.complete && loading.style.visibility != 'hidden') {
                 loading.style.visibility = 'hidden';
             }
-            window.requestAnimationFrame(loop);
+            window.requestAnimationFrame(function() {loop()});
         }
-        window.requestAnimationFrame(loop);
+        init();
+        window.requestAnimationFrame(function() {loop()});
     </script>
 </html>
