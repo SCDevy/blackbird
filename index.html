@@ -75,15 +75,48 @@
         var canvas    = document.getElementById('bkgCanvas');
         var logo      = document.getElementById('logo');
 
-        var ctx       = canvas.getContext('2d');
+        var context       = canvas.getContext('2d');
 
-        var shapes = [];
-        function Shape() {
+        var Triangle = function(startX, startY, scale, rate, vector, fill) {
+            var triangleObject = {
+                x: startX,
+                y: startY,
+                w: 1 * scale,
+                h: 1 * scale,
+                rate: rate,
+                vector: vector,
+                fill: fill,
+                _initialize: function() {
+                    return true;
+                },
+                draw: function(ctx) {
+                    ctx.beginPath();
+                    ctx.moveTo(100, 100);
+                    ctx.lineTo(100, 300);
+                    ctx.lineTo(300, 300);
+                    ctx.closePath();
+                }
+            }
+
+            triangleObject._initialize();
+            return triangleObject;
         }
 
-        function init() {
+        // the triangle
+        context.beginPath();
+        context.moveTo(100, 100);
+        context.lineTo(100, 300);
+        context.lineTo(300, 300);
+        context.closePath();
 
-        }
+        // the outline
+        context.lineWidth = 10;
+        context.strokeStyle = '#666666';
+        context.stroke();
+
+        // the fill color
+        context.fillStyle = "#FFCC00";
+        context.fill();
 
         function loop() {
             canvas.width   = window.innerWidth;
@@ -94,7 +127,6 @@
             }
             window.requestAnimationFrame(function() {loop()});
         }
-        init();
         window.requestAnimationFrame(function() {loop()});
     </script>
 </html>
